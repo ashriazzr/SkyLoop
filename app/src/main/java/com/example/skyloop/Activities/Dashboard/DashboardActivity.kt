@@ -6,11 +6,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
@@ -56,8 +58,8 @@ fun MainScreen(){
     var from: String = ""
     var to: String = ""
     var classes: String = ""
-    var adultPassgener:String=""
-    var childPassgener:String=""
+    var adultPassenger:String=""
+    var childPassenger:String=""
     val context= LocalContext.current
 
     StatusTopBarColor()
@@ -81,20 +83,21 @@ fun MainScreen(){
             item {
                 Column (modifier = Modifier
                     .padding(32.dp)
-                    .background(colorResource(R.color.darkPurple),
+                    .background(
+                        colorResource(R.color.darkPurple),
                         shape = RoundedCornerShape(20.dp)
                     )
                     .fillMaxWidth()
                     .padding(vertical = 16.dp, horizontal = 24.dp)
                 ){
                     //from Section
-                    YellowTitle("From")
+                    YellowTitle("Aku dari sini")
                     val locationNames:List<String> = locations.map{it.Name}
 
                     DropDownList(
                         items = locationNames,
                         loadingIcon = painterResource(R.drawable.from_ic),
-                        hint = "Select Origin",
+                        hint = "Pilih Tikum",
                         showLocationLoading=showLocationLoading
                     ) {
                         selectedItem->
@@ -103,16 +106,55 @@ fun MainScreen(){
                     }
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    //from Section
-                    YellowTitle("To")
+                    //to Section
+                    YellowTitle("Mau ke sini")
 
                     DropDownList(
                         items = locationNames,
                         loadingIcon = painterResource(R.drawable.from_ic),
-                        hint = "Select Destination",
+                        hint = "Pilih your destination",
                         showLocationLoading=showLocationLoading
-                    ) {
-                            selectedItem->
+                    ) { selectedItem->
+                        to = selectedItem
+
+                    }
+
+                    //passenger Counter
+                    Spacer(modifier = Modifier.height(16.dp))
+                    YellowTitle("Penumpangs")
+                    Row (modifier = Modifier.fillMaxWidth()){
+                        PassengerCounter(
+                            title="Adult",
+                            modifier = Modifier.weight(1f),
+                            onItemSelected = {adultPassenger=it}
+                        )
+                        Spacer(modifier = Modifier.width(16.dp))
+                        PassengerCounter(
+                            title="Toodler",
+                            modifier = Modifier.weight(1f),
+                            onItemSelected = {childPassenger=it}
+                        )
+                    }
+
+                    //calendar Pick
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Row{
+                        YellowTitle("Otw Kapan",Modifier.weight(1f))
+                        Spacer(modifier = Modifier.width(16.dp))
+                        YellowTitle("Balik Kapan",Modifier.weight(1f))
+                    }
+                    DatePickerScreen(Modifier.weight(1f))
+
+                    Spacer(modifier = Modifier.height(16.dp))
+                    //classes Section
+                        YellowTitle("Class")
+                        val classItems= listOf("Business Calss","First Class","Economy Class")
+                    DropDownList(
+                        items = classItems,
+                        loadingIcon = painterResource(R.drawable.seat_black_ic),
+                        hint = "Pilih Kasta You",
+                        showLocationLoading=showLocationLoading
+                    ) { selectedItem->
                         to = selectedItem
 
                     }

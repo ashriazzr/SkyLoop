@@ -62,7 +62,7 @@ fun TopBar() {
                 }
         )
         Text(
-            text = "Alex Johnson",
+            text = "Sigma Boy",
             color = Color.White,
             fontWeight = FontWeight.Bold,
             fontSize = 14.sp,
