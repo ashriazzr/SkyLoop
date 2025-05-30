@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SkyLoop</string>
     <string name="subtitle_splash">Wherever you want to go, Skyloop gets you there—\nquickly, safely, and affordably. Start your journey with us.</string>
+    <string name="dashboard_title">Let\'s explore the World\nwith Loopy!!</string>
 </resources>

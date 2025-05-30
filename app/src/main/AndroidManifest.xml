@@ -13,8 +13,11 @@
         android:theme="@style/Theme.SkyLoop"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.Dashboad.DashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.Splash.SplashActivity"
-            android:exported="false" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +28,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.SkyLoop">
-
-        </activity>
+            android:theme="@style/Theme.SkyLoop"></activity>
     </application>
 
 </manifest>
