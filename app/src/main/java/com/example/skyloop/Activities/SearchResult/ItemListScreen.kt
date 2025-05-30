@@ -24,11 +24,14 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.example.skyloop.Domain.FlightModel
 import com.example.skyloop.R
 import com.example.skyloop.ViewModel.MainViewModel
+
 
 @Composable
 fun ItemListScreen(
@@ -109,3 +112,27 @@ fun ItemListScreen(
         }
     }
 }
+
+//// Preview harus di luar fungsi composable lain
+//@Preview(showBackground = true)
+//@Composable
+//fun FlightItemPreview() {
+//    FlightItem(
+//        item = FlightModel(
+//            airlineLogo = "https://upload.wikimedia.org/wikipedia/commons/4/44/Air_Asia_logo.svg",
+//            airlineName = "Cathay Pacific",
+//            arriveTime = "2h 45m",
+//            classSeat = "Business class",
+//            date = "20 aug,2025",
+//            from = "Korea",
+//            fromShort = "JFK",
+//            numberSeat = 91,
+//            price = 159.1,
+//            reservedSeats = "D1,B3,B3,F6,E4,D1,D5,A6",
+//            time = "22:45",
+//            to = "Tokyo",
+//            toShort = "LAX"
+//        ),
+//        index = 0
+//    )
+//}

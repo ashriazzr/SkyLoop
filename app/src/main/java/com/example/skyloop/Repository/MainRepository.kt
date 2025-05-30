@@ -43,7 +43,7 @@ class MainRepository {
                 for(childSnapshot in snapshot.children){
                     val list=childSnapshot.getValue(FlightModel::class.java)
                     if(list!=null){
-                        if(list.To == to){
+                        if(list.to == to){
                             lists.add(list)
                         }
                     }
@@ -56,5 +56,7 @@ class MainRepository {
             }
         })
         return listData
+
     }
+
 }

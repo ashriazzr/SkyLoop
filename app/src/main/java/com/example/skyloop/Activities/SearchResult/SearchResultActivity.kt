@@ -8,29 +8,28 @@ import com.example.skyloop.Activities.Splash.StatusTopBarColor
 import com.example.skyloop.ViewModel.MainViewModel
 
 class SearchResultActivity : AppCompatActivity() {
-
     private val viewModel = MainViewModel()
-    private var from: String = ""
-    private var to: String = ""
+    private var from:String=""
+    private var to:String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Perhatikan: harus konsisten dengan kunci di DashboardActivity
-        from = intent.getStringExtra("from") ?: ""
-        to = intent.getStringExtra("to") ?: ""
+        from=intent.getStringExtra("from")?:""
+        to=intent.getStringExtra("to")?:""
 
-        setContent {
+        setContent{
             StatusTopBarColor()
 
             ItemListScreen(
-                from = from,
-                to = to,
-                viewModel = viewModel,
-                onBackClick = { finish() }
+                from=from,
+                to=to,
+                viewModel=viewModel,
+                onBackClick={finish()}
             )
         }
+
     }
 
 

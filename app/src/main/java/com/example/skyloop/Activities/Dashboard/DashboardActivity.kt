@@ -1,6 +1,5 @@
 package com.example.skyloop.Activities.Dashboard
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -33,30 +32,27 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import com.example.skyloop.Activities.SearchResult.SearchResultActivity
 import com.example.skyloop.Activities.Splash.GradientButton
-//import com.example.skyloop.Activities.SearchResult.SearchResultActivity
 import com.example.skyloop.Activities.Splash.StatusTopBarColor
 import com.example.skyloop.Domain.LocationModel
 import com.example.skyloop.R
 import com.example.skyloop.ViewModel.MainViewModel
-
 
 class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MainScreen() // <--- ini yang penting
+            MainScreen()
         }
     }
 }
 
-
 @Composable
 @Preview
-fun MainScreen(){
+fun MainScreen() {
     val locations = remember { mutableStateListOf<LocationModel>() }
     val viewModel = MainViewModel()
     var showLocationLoading by remember { mutableStateOf(true) }
@@ -77,56 +73,58 @@ fun MainScreen(){
         }
     }
 
-    Scaffold (bottomBar ={ MyBottomBar() },
-    ){paddingValues ->
-        LazyColumn  (modifier = Modifier
-            .fillMaxSize()
-            .background(color = colorResource(R.color.darkPurple2))
-            .padding(paddingValues = paddingValues)
-        ){
-            item{ TopBar() }
+    Scaffold(
+        bottomBar = { MyBottomBar() },
+    ) { paddingValues ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = colorResource(R.color.darkPurple2))
+                .padding(paddingValues = paddingValues)
+        ) {
+            item { TopBar() }
             item {
-                Column (modifier = Modifier
-                    .padding(32.dp)
-                    .background(
-                        colorResource(R.color.darkPurple),
-                        shape = RoundedCornerShape(20.dp)
-                    )
-                    .fillMaxWidth()
-                    .padding(vertical = 16.dp, horizontal = 24.dp)
-                ){
+                Column(
+                    modifier = Modifier
+                        .padding(32.dp)
+                        .background(
+                            colorResource(R.color.darkPurple), shape = RoundedCornerShape(20.dp)
+                        )
+                        .fillMaxWidth()
+                        .padding(vertical = 16.dp, horizontal = 24.dp)
+                ) {
+
                     //from Section
-                    YellowTitle("Aku dari sini")
-                    val locationNames:List<String> = locations.map{it.Name}
+                    YellowTitle("From")
+                    val locationNames: List<String> = locations.map { it.Name }
 
                     DropDownList(
                         items = locationNames,
                         loadingIcon = painterResource(R.drawable.from_ic),
-                        hint = "Pilih Tikum",
-                        showLocationLoading=showLocationLoading
-                    ) {
-                        selectedItem->
+                        hint = "Select origin",
+                        showLocationLoading = showLocationLoading
+                    ) { selectedItem ->
                         from = selectedItem
-
                     }
+
                     Spacer(modifier = Modifier.height(16.dp))
 
+
                     //to Section
-                    YellowTitle("Mau ke sini")
+                    YellowTitle("To")
 
                     DropDownList(
                         items = locationNames,
                         loadingIcon = painterResource(R.drawable.from_ic),
-                        hint = "Pilih your destination",
-                        showLocationLoading=showLocationLoading
-                    ) { selectedItem->
+                        hint = "Select Destination",
+                        showLocationLoading = showLocationLoading
+                    ) { selectedItem ->
                         to = selectedItem
-
                     }
 
                     //passenger Counter
                     Spacer(modifier = Modifier.height(16.dp))
-                    YellowTitle("Penumpangs")
+                    YellowTitle("Passengers")
                     Row (modifier = Modifier.fillMaxWidth()){
                         PassengerCounter(
                             title="Adult",
@@ -135,36 +133,36 @@ fun MainScreen(){
                         )
                         Spacer(modifier = Modifier.width(16.dp))
                         PassengerCounter(
-                            title="Toodler",
+                            title="Child",
                             modifier = Modifier.weight(1f),
                             onItemSelected = {childPassenger=it}
                         )
                     }
 
-                    //calendar Pick
+                    //calender Picker
                     Spacer(modifier = Modifier.height(16.dp))
                     Row{
-                        YellowTitle("Otw Kapan",Modifier.weight(1f))
+                        YellowTitle("Departure date",Modifier.weight(1f))
                         Spacer(modifier = Modifier.width(16.dp))
-                        YellowTitle("Balik Kapan",Modifier.weight(1f))
+                        YellowTitle("Return date",Modifier.weight(1f))
                     }
                     DatePickerScreen(Modifier.weight(1f))
 
                     Spacer(modifier = Modifier.height(16.dp))
+
                     //classes Section
-                        YellowTitle("Class")
-                        val classItems= listOf("Business Calss","First Class","Economy Class")
+                    YellowTitle("class")
+                    val classItems= listOf("Business class","First class","Economy Class")
                     DropDownList(
                         items = classItems,
                         loadingIcon = painterResource(R.drawable.seat_black_ic),
-                        hint = "Pilih Kasta You",
-                        showLocationLoading=showLocationLoading
-                    ) { selectedItem->
+                        hint = "Select class",
+                        showLocationLoading = showLocationLoading
+                    ) { selectedItem ->
                         to = selectedItem
-
                     }
-                    //Search Button
 
+                    //Search Button
                     Spacer(modifier = Modifier.height(16.dp))
                     GradientButton(
                         onClick = {
@@ -174,8 +172,7 @@ fun MainScreen(){
                                 putExtra("numPassenger",adultPassenger+childPassenger)
 
                             }
-                            context.startActivity(intent)
-
+                            startActivity(context,intent,null)
                         },
                         text="Search",
                     )
