@@ -1,8 +1,7 @@
-package com.example.skyloop.Activities.Dashboad
+package com.example.skyloop.Activities.Dashboard
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight

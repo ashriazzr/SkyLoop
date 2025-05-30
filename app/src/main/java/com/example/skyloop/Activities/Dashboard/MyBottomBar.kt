@@ -1,4 +1,4 @@
-package com.example.skyloop.Activities.Dashboad
+package com.example.skyloop.Activities.Dashboard
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.padding

@@ -1,19 +1,14 @@
-package com.example.skyloop.Activities.Dashboad
+package com.example.skyloop.Activities.Dashboard
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
@@ -32,16 +27,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat.startActivity
 //import com.example.skyloop.Activities.SearchResult.SearchResultActivity
-import com.example.skyloop.Activities.Splash.GradientButton
 import com.example.skyloop.Activities.Splash.StatusTopBarColor
 import com.example.skyloop.Domain.LocationModel
-//import com.example.skyloop.Domain.LocationModel
 import com.example.skyloop.R
 import com.example.skyloop.ViewModel.MainViewModel
 
-//import com.example.skyloop.ViewModel.MainViewModel
 
 class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,6 +86,17 @@ fun MainScreen(){
                 ){
                     YellowTitle("From")
                     val locationNames:List<String> = locations.map{it.Name}
+
+                    DropDownList(
+                        items = locationNames,
+                        loadingIcon = painterResource(R.drawable.from_ic),
+                        hint = "Select Origin",
+                        showLocationLoading=showLocationLoading
+                    ) {
+                        selectedItem->
+                        from = selectedItem
+
+                    }
                 }
             }
         }

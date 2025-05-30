@@ -1,4 +1,4 @@
-package com.example.skyloop.Activities.Dashboad
+package com.example.skyloop.Activities.Dashboard
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -11,7 +11,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.OutlinedTextField
@@ -34,9 +33,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.skyloop.R
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DropDownMenu(
+fun DropDownList(
     items: List<String>,
     loadingIcon: Painter,
     hint: String = "",
@@ -89,11 +88,12 @@ fun DropDownMenu(
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp
                 ),
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor = Color.Transparent,
-                    unfocusedBorderColor = Color.Transparent,
-                    containerColor = colorResource(R.color.lightPurple)
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = colorResource(R.color.lightPurple),
+                    unfocusedContainerColor = colorResource(R.color.lightPurple),
+                    disabledContainerColor = colorResource(R.color.lightPurple)
                 )
+
             )
             DropdownMenu(
                 expanded = expanded,

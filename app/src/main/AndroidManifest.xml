@@ -13,7 +13,7 @@
         android:theme="@style/Theme.SkyLoop"
         tools:targetApi="31">
         <activity
-            android:name=".Activities.Dashboad.DashboardActivity"
+            android:name=".Activities.Dashboard.DashboardActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.Splash.SplashActivity"
