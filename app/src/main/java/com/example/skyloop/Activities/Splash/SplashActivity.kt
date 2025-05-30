@@ -38,6 +38,7 @@ class SplashActivity : AppCompatActivity() {
         setContent {
             SplashScreen(onGetStartedClick = {
                 startActivity(Intent(this, DashboardActivity::class.java))
+                finish()
             })
         }
     }
