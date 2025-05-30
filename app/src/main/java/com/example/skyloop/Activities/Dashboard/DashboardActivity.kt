@@ -1,5 +1,7 @@
 package com.example.skyloop.Activities.Dashboard
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -31,6 +33,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
+import com.example.skyloop.Activities.SearchResult.SearchResultActivity
+import com.example.skyloop.Activities.Splash.GradientButton
 //import com.example.skyloop.Activities.SearchResult.SearchResultActivity
 import com.example.skyloop.Activities.Splash.StatusTopBarColor
 import com.example.skyloop.Domain.LocationModel
@@ -158,6 +163,22 @@ fun MainScreen(){
                         to = selectedItem
 
                     }
+                    //Search Button
+
+                    Spacer(modifier = Modifier.height(16.dp))
+                    GradientButton(
+                        onClick = {
+                            val intent=Intent(context,SearchResultActivity::class.java).apply {
+                                putExtra("from",from)
+                                putExtra("to",to)
+                                putExtra("numPassenger",adultPassenger+childPassenger)
+
+                            }
+                            context.startActivity(intent)
+
+                        },
+                        text="Search",
+                    )
                 }
             }
         }
