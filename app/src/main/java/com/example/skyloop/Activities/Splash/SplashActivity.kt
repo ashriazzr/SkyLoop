@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.example.skyloop.Activities.Dashboard.DashboardActivity
-import com.example.skyloop.MainActivity
+//import com.example.skyloop.MainActivity
 import com.example.skyloop.R
 
 class SplashActivity : AppCompatActivity() {
