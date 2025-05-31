@@ -152,8 +152,13 @@ fun MainScreen(){
 
                     Spacer(modifier = Modifier.height(16.dp))
                     //classes Section
+<<<<<<< Updated upstream
                         YellowTitle("Class")
                         val classItems= listOf("Business Calss","First Class","Economy Class")
+=======
+                    YellowTitle("class")
+                    val classItems= listOf("Business class","First class","Economy class")
+>>>>>>> Stashed changes
                     DropDownList(
                         items = classItems,
                         loadingIcon = painterResource(R.drawable.seat_black_ic),

@@ -37,17 +37,21 @@ fun ItemListScreen(
     viewModel: MainViewModel,
     onBackClick: () -> Unit
 ) {
-    val items by viewModel.loadFiltered(from, to).observeAsState(emptyList())
+    val items by viewModel.flights.observeAsState(emptyList())
     var isLoading by remember { mutableStateOf(true) }
 
+    // Panggil loadFiltered sekali saat from/to berubah
     LaunchedEffect(from, to) {
         viewModel.loadFiltered(from, to)
     }
 
+    // Set loading false jika items sudah ada
     LaunchedEffect(items) {
         isLoading = items.isEmpty()
+        println("Filtered items: $items") // debug log
     }
 
+    // UI Header
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -55,7 +59,8 @@ fun ItemListScreen(
             .padding(top = 36.dp, start = 16.dp, end = 16.dp)
     ) {
         val (backBtn, headerTitle, worldImg) = createRefs()
-        Image(painter = painterResource(R.drawable.back),
+        Image(
+            painter = painterResource(R.drawable.back),
             contentDescription = null,
             modifier = Modifier
                 .clickable { onBackClick() }
@@ -70,13 +75,11 @@ fun ItemListScreen(
             fontWeight = FontWeight.Bold,
             fontSize = 18.sp,
             color = Color.White,
-            modifier = Modifier
-                .padding(start = 8.dp)
-                .constrainAs(headerTitle) {
-                    start.linkTo(backBtn.end, margin = 8.dp)
-                    top.linkTo(backBtn.top)
-                    bottom.linkTo(backBtn.bottom)
-                }
+            modifier = Modifier.constrainAs(headerTitle) {
+                start.linkTo(backBtn.end, margin = 8.dp)
+                top.linkTo(backBtn.top)
+                bottom.linkTo(backBtn.bottom)
+            }
         )
         Image(
             painter = painterResource(R.drawable.world),
@@ -88,8 +91,7 @@ fun ItemListScreen(
         )
     }
 
-
-    //show list
+    // Show list or loading
     if (isLoading) {
         Box(
             modifier = Modifier.fillMaxSize(),
@@ -104,7 +106,7 @@ fun ItemListScreen(
                 .padding(top = 100.dp)
         ) {
             itemsIndexed(items) { index, item ->
-                FlightItem(item=item,index=index)
+                FlightItem(item = item, index = index)
             }
         }
     }
