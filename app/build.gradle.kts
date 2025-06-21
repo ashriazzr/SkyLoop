@@ -47,7 +47,6 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation ("com.itextpdf:itext7-core:7.2.5")
-    implementation ("com.github.barteksc:android-pdf-viewer:3.2.0-beta.1")
 
     implementation ("com.github.ismaeldivita:chip-navigation-bar:1.4.0")
     implementation ("com.github.bumptech.glide:glide:4.13.0")

@@ -1,6 +1,7 @@
 package com.ticketing.skyloop.Activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -43,7 +44,13 @@ public class TicketDetailActivity extends BaseActivity {
     }
 
     private void setVariable() {
-        binding.backBtn.setOnClickListener(v -> finish());
+        binding.backBtn.setOnClickListener(v -> {
+            // Kembali ke halaman utama dan clear semua activity di stack
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish();
+        });
         binding.fromTxt.setText(flight.getFromShort());
         binding.fromSmallTxt.setText(flight.getFrom());
         binding.toTxt.setText(flight.getTo());
