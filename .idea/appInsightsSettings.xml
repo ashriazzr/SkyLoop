@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AppInsightsSettings">
-    <option name="selectedTabId" value="Android Vitals" />
     <option name="tabSettings">
       <map>
         <entry key="Firebase Crashlytics">
@@ -9,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.example.skyloop" />
-                  <option name="mobileSdkAppId" value="1:252635984050:android:6cee5b3fce84aa64e199ab" />
-                  <option name="projectId" value="skyloop-754c4" />
-                  <option name="projectNumber" value="252635984050" />
+                  <option name="appId" value="com.ticketing.skyloop" />
+                  <option name="mobileSdkAppId" value="1:62987514549:android:3463a69345fd28e92bc4fc" />
+                  <option name="projectId" value="skyloop-74e1d" />
+                  <option name="projectNumber" value="62987514549" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

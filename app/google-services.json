@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "252635984050",
-    "project_id": "skyloop-754c4",
-    "storage_bucket": "skyloop-754c4.firebasestorage.app"
+    "project_number": "62987514549",
+    "project_id": "skyloop-74e1d",
+    "storage_bucket": "skyloop-74e1d.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:252635984050:android:6cee5b3fce84aa64e199ab",
+        "mobilesdk_app_id": "1:62987514549:android:3463a69345fd28e92bc4fc",
         "android_client_info": {
-          "package_name": "com.example.skyloop"
+          "package_name": "com.ticketing.skyloop"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD7yn5M9RBSe8cC0OE_YChawlpy0bGjVfI"
+          "current_key": "AIzaSyB9YK-nfOHtf_LpSPJQAPyTzdkPGdJXtvw"
         }
       ],
       "services": {
